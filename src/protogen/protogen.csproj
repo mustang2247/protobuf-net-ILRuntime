@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFrameworks>net46;netstandard1.3</TargetFrameworks>
+    <VersionPrefix>$(ProtoGenVersion)</VersionPrefix>
+    <OutputType>Exe</OutputType>
+    <Configurations>Debug;Release;VS</Configurations>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>C:\Users\lclly\Desktop\protobuf-net\src\Backup\protogen\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <Product>protobuf-net (net46)</Product>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net46|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;NET46</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
+    <DefineConstants>$(DefineConstants);NETCOREAPP1_3</DefineConstants>
+    <ImportLibs>core</ImportLibs>
+    <FeatureServiceModel>false</FeatureServiceModel>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\protobuf-net.Reflection\protobuf-net.Reflection.csproj" />
+    <ProjectReference Include="..\protobuf-net\protobuf-net.csproj" />
+  </ItemGroup>
+</Project>

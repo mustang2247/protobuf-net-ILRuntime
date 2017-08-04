@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <TargetFrameworks>netcoreapp1.1;net452</TargetFrameworks>
+    <LibImport>net</LibImport>
+    <Configurations>Debug;Release;VS</Configurations>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(TargetFramework)=='netcoreapp1.1'">
+    <DefineConstants>FEAT_COMPILER;NO_NHIBERNATE;COREFX;NO_INTERNAL_CONTEXT</DefineConstants>
+    <LibImport>core</LibImport>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(TargetFramework)=='netstandard1.3'">
+    <DefineConstants>FEAT_COMPILER;NO_NHIBERNATE;COREFX;NO_INTERNAL_CONTEXT</DefineConstants>
+    <LibImport>core</LibImport>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(TargetFramework)=='net452'">
+    <DefineConstants>FEAT_COMPILER;FX30;NO_INTERNAL_CONTEXT</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.2.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework)=='net452'">
+    <PackageReference Include="NHibernate" Version="4.1.1.4000" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(LibImport)' == 'net'">
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(LibImport)'=='core'">
+    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+    <PackageReference Include="System.Threading" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
+    <PackageReference Include="System.Threading.ThreadPool" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Serialization.Xml" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\protobuf-net\protobuf-net.csproj" />
+    <ProjectReference Include="..\protobuf-net.Reflection\protobuf-net.Reflection.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Schemas\descriptor_expected.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="protobuf-net.Test.xunit.runner.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="protoc.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schemas\google\**\*.proto">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+        <None Update="Schemas\protobuf-net\**\*.proto">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schemas\*.proto">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

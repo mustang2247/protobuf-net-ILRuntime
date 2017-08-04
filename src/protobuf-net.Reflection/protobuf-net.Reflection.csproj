@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <VersionPrefix>$(ProtoGenVersion)</VersionPrefix>
+    <TargetFrameworks>net46;netstandard1.3</TargetFrameworks>
+    <AssemblyName>protobuf-net.Reflection</AssemblyName>
+    <Title>protobuf-net.Reflection</Title>
+    <Description>ProtoBuf DSL (proto2 / proto3) and descriptor tools for protobuf-net</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Configurations>Debug;Release;VS</Configurations>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>C:\Users\lclly\Desktop\protobuf-net\src\Backup\protobuf-net.Reflection\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'VS'">
+    <!--
+    <TargetFrameworks>net46;netstandard1.3</TargetFrameworks>
+    -->
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="CodeGenerator.OneOfStub.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\protobuf-net\protobuf-net.csproj" />
+  </ItemGroup>
+</Project>
