@@ -1,3 +1,12 @@
+## protobuf-net-ILRuntime
+from http://git.oschina.net/cyecp/protobuf-net
+
+## 简介
+Protobuf-net for ILRuntime 可以使用repeat 支持proto2 & proto3
+注意：
+作者表示：目前GIT上的版本只支持unity2017 .net 4.6~ 对.net 3.5的支持 需要自己慢慢把语法改掉~
+
+## 使用说明
 支持ILRuntime 的 protobuf-net
 把 src 里面的 protobuf-net 编译或直接放在 unity Assets 中 删掉.csproj
 
